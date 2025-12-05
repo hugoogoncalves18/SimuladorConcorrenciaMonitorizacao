@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Simulador/Simulador.iml" filepath="$PROJECT_DIR$/Simulador/Simulador.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SimuladorConcorrenciaMonitorizacao.iml" filepath="$PROJECT_DIR$/.idea/SimuladorConcorrenciaMonitorizacao.iml" />
     </modules>
   </component>
