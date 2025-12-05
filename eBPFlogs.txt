@@ -1,0 +1,187 @@
+16:02:18 Thread ->MAIN - SYSTEM_START - Cenário 2
+16:02:18 Thread ->Vitima - LOCK_TRY - A tentar adquirir recursoresources.ServerResource@c27c5e6
+16:02:18 Thread ->Hack - LOCK_TRY - A tentar adquirir recursoresources.ServerResource@4450b14a
+16:02:18 Thread ->Hack - LOCK_HELD - Obteve: FileA
+16:02:18 Thread ->Vitima - LOCK_HELD - Obteve: File B
+16:02:19 Thread ->Hack - LOCK_TRY - A tentar adquirir recursoresources.ServerResource@c27c5e6
+16:02:19 Thread ->Vitima - LOCK_TRY - A tentar adquirir recursoresources.ServerResource@4450b14a
+16:02:24 Thread ->MAIN - ALERT - TIMEOUT: Deadlock detetado
+16:02:52 Thread ->MAIN - SYSTEM_START - Cenário 2
+16:02:52 Thread ->P2 - LOCK_TRY - Ordenação forçada:  File B
+16:02:52 Thread ->P1 - LOCK_TRY - Ordenação forçada:  File B
+16:02:52 Thread ->P2 - LOCK_HELD - Obteve File B
+16:02:52 Thread ->P2 - LOCK_TRY - Ordenação forçada: A tentar FileA
+16:02:52 Thread ->P2 - SUCCESS - ACESSO SEGURO a ambos os recursos!
+16:02:52 Thread ->P2 - RELEASE - Libertou FileA
+16:02:52 Thread ->P2 - RELEASE - Libertou File B
+16:02:55 Thread ->MAIN - ALERT - TIMEOUT: Deadlock detetado
+16:07:12 Thread ->MAIN - SYSTEM_START - Cenário 2
+16:07:13 Thread ->P2 - LOCK_TRY - Ordenação forçada:  File B
+16:07:13 Thread ->P1 - LOCK_TRY - Ordenação forçada:  File B
+16:07:13 Thread ->P2 - LOCK_HELD - Obteve File B
+16:07:13 Thread ->P2 - LOCK_TRY - Ordenação forçada: A tentar FileA
+16:07:13 Thread ->P2 - SUCCESS - ACESSO SEGURO a ambos os recursos!
+16:07:13 Thread ->P2 - RELEASE - Libertou FileA
+16:07:13 Thread ->P1 - ALERT_STARVATION - Alerta, tempo de espera anormal227 possivel starvation
+16:07:13 Thread ->P1 - LOCK_HELD - Obteve File B
+16:07:13 Thread ->P2 - RELEASE - Libertou File B
+16:07:13 Thread ->P1 - LOCK_TRY - Ordenação forçada: A tentar FileA
+16:07:13 Thread ->P1 - SUCCESS - ACESSO SEGURO a ambos os recursos!
+16:07:13 Thread ->P1 - RELEASE - Libertou FileA
+16:07:13 Thread ->P1 - RELEASE - Libertou File B
+16:07:13 Thread ->MAIN - SUCCESS - Execução terminada
+16:07:22 Thread ->MAIN - SYSTEM_START - Cenário 3
+16:07:22 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:22 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:23 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:23 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:23 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:23 Thread ->Pobre - WORK - A usar o serviço
+16:07:23 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:23 Thread ->MAIN - SUCCESS - Thread pobre executou com sucesso 
+16:07:23 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:23 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:23 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:23 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:24 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:25 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:26 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-4 - WORK - A usar o serviço
+16:07:27 Thread ->Rica-0 - WORK - A usar o serviço
+16:07:28 Thread ->Rica-1 - WORK - A usar o serviço
+16:07:28 Thread ->Rica-2 - WORK - A usar o serviço
+16:07:28 Thread ->Rica-3 - WORK - A usar o serviço
+16:07:28 Thread ->Rica-4 - WORK - A usar o serviço
+16:10:25 Thread ->MAIN - SYSTEM_START - Cenário 3
+16:10:25 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:25 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:25 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:26 Thread ->Pobre - WORK - A usar o serviço
+16:10:26 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:26 Thread ->MAIN - SUCCESS - Thread pobre executou com sucesso 
+16:10:26 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:26 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:26 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:26 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:26 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:26 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:26 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:27 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-2 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-0 - WORK - A usar o serviço
+16:10:28 Thread ->Rica-1 - WORK - A usar o serviço
+16:10:29 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:06 Thread ->MAIN - SYSTEM_START - Cenário 3
+16:12:06 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:06 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:06 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:06 Thread ->Pobre - WORK - A usar o serviço
+16:12:06 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:06 Thread ->MAIN - SUCCESS - Thread pobre executou com sucesso 
+16:12:06 Thread ->Rica-0 - INTERRUPT - Interrompida
+16:12:06 Thread ->Rica-1 - INTERRUPT - Interrompida
+16:12:06 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:06 Thread ->Rica-2 - INTERRUPT - Interrompida
+16:12:06 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:06 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:06 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:07 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:08 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:09 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:09 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:40 Thread ->MAIN - SYSTEM_START - Cenário 3
+16:12:40 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:40 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:40 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:40 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:40 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:40 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:40 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:40 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-2 - WORK - A usar o serviço
+16:12:41 Thread ->Pobre - WORK - A usar o serviço
+16:12:41 Thread ->MAIN - SUCCESS - Thread pobre executou com sucesso 
+16:12:41 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-0 - INTERRUPT - Interrompida
+16:12:41 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:41 Thread ->Rica-1 - INTERRUPT - Interrompida
+16:12:42 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:42 Thread ->Rica-0 - WORK - A usar o serviço
+16:12:43 Thread ->Rica-1 - WORK - A usar o serviço
+16:12:43 Thread ->Rica-1 - WORK - A usar o serviço
