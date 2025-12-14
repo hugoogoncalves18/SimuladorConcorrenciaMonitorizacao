@@ -1,7 +1,7 @@
 package scens;
 
 import monitor.eBPFMonitor;
-import resources.Dtbase;
+import resources.ContaConjunta;
 import java.util.Random;
 
 /**
@@ -9,18 +9,33 @@ import java.util.Random;
  * Garante exclusão mútua na secção critica, impedindo as RaceConditions
  */
 public class RaceConditionsSecure implements Runnable {
-    private final Dtbase db;
+    /** Referência para a conta bancária partilhada onde será feito o depósito. */
+    private final ContaConjunta conta;
+
+    /** Valor monetário a depositar na conta. */
     private final int valor;
+
+    /** Gerador de aleatoriedade para simular latência de rede/processamento. */
     private final Random random;
 
-    public RaceConditionsSecure(Dtbase db, int valor) {
-        if (db == null)
-            throw  new IllegalArgumentException("A DB não pode ser nula");
-        this.db = db;
+    /**
+     * Instancia um novo worker para realizar uma transação segura.
+     *
+     * @param conta A conta bancária partilhada (recurso crítico). Não pode ser nula.
+     * @param valor O valor a depositar na conta.
+     * @throws IllegalArgumentException Se a conta fornecida for nula.
+     */
+    public RaceConditionsSecure(ContaConjunta conta, int valor) {
+        if (conta == null)
+            throw  new IllegalArgumentException("A conta não pode ser nula");
+        this.conta = conta;
         this.valor = valor;
         this.random = new Random();
     }
 
+    /**
+    * Executa a lógica da transação segura.
+    */
     @Override
     public  void run() {
         String nomeThread = Thread.currentThread().getName();
@@ -31,20 +46,20 @@ public class RaceConditionsSecure implements Runnable {
         try{
             //solicita permissão
             monitor.log(nomeThread, "WAIT", "a aguardar");
-            db.getMutex().acquire();
+            conta.getMutex().acquire();
 
             try{
                 monitor.log(nomeThread, "LOCK", "permissão obtida");
-                int saldoTemp = db.getSaldo();
+                int saldoTemp = conta.getSaldo();
 
                 //simular latência
                 Thread.sleep(10 + random.nextInt(90));
-                db.setSaldo(saldoTemp + valor);
+                conta.setSaldo(saldoTemp + valor);
 
-                monitor.log(nomeThread, "WRITE", "Saldo atualizado" + db.getSaldo());
+                monitor.log(nomeThread, "WRITE", "Saldo atualizado" + conta.getSaldo());
             } finally {
                 //liberta permissão
-                db.getMutex().release();
+                conta.getMutex().release();
                 monitor.log(nomeThread, "RELEASE", "permissão libertada");
             }
         } catch (InterruptedException e) {

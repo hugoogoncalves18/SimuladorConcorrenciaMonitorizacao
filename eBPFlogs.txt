@@ -185,3 +185,186 @@
 16:12:42 Thread ->Rica-0 - WORK - A usar o serviço
 16:12:43 Thread ->Rica-1 - WORK - A usar o serviço
 16:12:43 Thread ->Rica-1 - WORK - A usar o serviço
+22:42:52 Thread ->MAIN - SYSTEM_START - Cenário 1
+22:42:52 Thread ->MB: 2 - INIT - Iniciar depósito de  10€
+22:42:52 Thread ->MB: 2 - READ - A ler saldo
+22:42:52 Thread ->MB: 0 - INIT - Iniciar depósito de  10€
+22:42:52 Thread ->MB: 0 - READ - A ler saldo
+22:42:52 Thread ->MB: 3 - INIT - Iniciar depósito de  10€
+22:42:52 Thread ->MB: 3 - READ - A ler saldo
+22:42:52 Thread ->MB: 1 - INIT - Iniciar depósito de  10€
+22:42:52 Thread ->MB: 1 - READ - A ler saldo
+22:42:52 Thread ->MB: 4 - INIT - Iniciar depósito de  10€
+22:42:52 Thread ->MB: 4 - READ - A ler saldo
+22:42:52 Thread ->MB: 3 - WRITE - Saldo atualizado para: 10
+22:42:52 Thread ->MB: 2 - WRITE - Saldo atualizado para: 10
+22:42:52 Thread ->MB: 4 - WRITE - Saldo atualizado para: 10
+22:42:52 Thread ->MB: 1 - WRITE - Saldo atualizado para: 10
+22:42:52 Thread ->MB: 0 - WRITE - Saldo atualizado para: 10
+22:42:52 Thread ->MAIN - RESULT - Saldo final: 10
+22:43:09 Thread ->MAIN - SYSTEM_START - Cenário 1
+22:43:09 Thread ->MB: 1 - INIT - A iniciar a transação10
+22:43:09 Thread ->MB: 1 - WAIT - a aguardar
+22:43:09 Thread ->MB: 1 - LOCK - permissão obtida
+22:43:09 Thread ->MB: 2 - INIT - A iniciar a transação10
+22:43:09 Thread ->MB: 2 - WAIT - a aguardar
+22:43:09 Thread ->MB: 0 - INIT - A iniciar a transação10
+22:43:09 Thread ->MB: 3 - INIT - A iniciar a transação10
+22:43:09 Thread ->MB: 3 - WAIT - a aguardar
+22:43:09 Thread ->MB: 0 - WAIT - a aguardar
+22:43:09 Thread ->MB: 4 - INIT - A iniciar a transação10
+22:43:09 Thread ->MB: 4 - WAIT - a aguardar
+22:43:09 Thread ->MB: 1 - WRITE - Saldo atualizado10
+22:43:09 Thread ->MB: 1 - RELEASE - permissão libertada
+22:43:09 Thread ->MB: 2 - LOCK - permissão obtida
+22:43:09 Thread ->MB: 2 - WRITE - Saldo atualizado20
+22:43:09 Thread ->MB: 3 - LOCK - permissão obtida
+22:43:09 Thread ->MB: 2 - RELEASE - permissão libertada
+22:43:09 Thread ->MB: 3 - WRITE - Saldo atualizado30
+22:43:09 Thread ->MB: 3 - RELEASE - permissão libertada
+22:43:09 Thread ->MB: 0 - LOCK - permissão obtida
+22:43:09 Thread ->MB: 0 - WRITE - Saldo atualizado40
+22:43:09 Thread ->MB: 0 - RELEASE - permissão libertada
+22:43:09 Thread ->MB: 4 - LOCK - permissão obtida
+22:43:09 Thread ->MB: 4 - WRITE - Saldo atualizado50
+22:43:09 Thread ->MB: 4 - RELEASE - permissão libertada
+22:43:09 Thread ->MAIN - RESULT - Saldo final: 50
+22:45:29 Thread ->MAIN - SYSTEM_START - Cenário 1
+22:45:29 Thread ->MB: 1 - INIT - Iniciar depósito de  10€
+22:45:29 Thread ->MB: 1 - READ - A ler saldo
+22:45:29 Thread ->MB: 0 - INIT - Iniciar depósito de  10€
+22:45:29 Thread ->MB: 2 - INIT - Iniciar depósito de  10€
+22:45:29 Thread ->MB: 2 - READ - A ler saldo
+22:45:29 Thread ->MB: 0 - READ - A ler saldo
+22:45:29 Thread ->MB: 4 - INIT - Iniciar depósito de  10€
+22:45:29 Thread ->MB: 4 - READ - A ler saldo
+22:45:29 Thread ->MB: 3 - INIT - Iniciar depósito de  10€
+22:45:29 Thread ->MB: 3 - READ - A ler saldo
+22:45:29 Thread ->MB: 1 - WRITE - Saldo atualizado para: 10
+22:45:29 Thread ->MB: 2 - WRITE - Saldo atualizado para: 10
+22:45:29 Thread ->MB: 4 - WRITE - Saldo atualizado para: 10
+22:45:29 Thread ->MB: 3 - WRITE - Saldo atualizado para: 10
+22:45:29 Thread ->MB: 0 - WRITE - Saldo atualizado para: 10
+22:45:29 Thread ->MAIN - RESULT - Saldo final: 10
+22:45:47 Thread ->MAIN - SYSTEM_START - Cenário 1
+22:45:47 Thread ->MB: 1 - INIT - A iniciar a transação10
+22:45:47 Thread ->MB: 1 - WAIT - a aguardar
+22:45:47 Thread ->MB: 1 - LOCK - permissão obtida
+22:45:47 Thread ->MB: 3 - INIT - A iniciar a transação10
+22:45:47 Thread ->MB: 3 - WAIT - a aguardar
+22:45:47 Thread ->MB: 2 - INIT - A iniciar a transação10
+22:45:47 Thread ->MB: 2 - WAIT - a aguardar
+22:45:47 Thread ->MB: 4 - INIT - A iniciar a transação10
+22:45:47 Thread ->MB: 4 - WAIT - a aguardar
+22:45:47 Thread ->MB: 0 - INIT - A iniciar a transação10
+22:45:47 Thread ->MB: 0 - WAIT - a aguardar
+22:45:47 Thread ->MB: 1 - WRITE - Saldo atualizado10
+22:45:47 Thread ->MB: 1 - RELEASE - permissão libertada
+22:45:47 Thread ->MB: 3 - LOCK - permissão obtida
+22:45:47 Thread ->MB: 3 - WRITE - Saldo atualizado20
+22:45:47 Thread ->MB: 3 - RELEASE - permissão libertada
+22:45:47 Thread ->MB: 2 - LOCK - permissão obtida
+22:45:47 Thread ->MB: 2 - WRITE - Saldo atualizado30
+22:45:47 Thread ->MB: 2 - RELEASE - permissão libertada
+22:45:47 Thread ->MB: 4 - LOCK - permissão obtida
+22:45:47 Thread ->MB: 4 - WRITE - Saldo atualizado40
+22:45:47 Thread ->MB: 4 - RELEASE - permissão libertada
+22:45:47 Thread ->MB: 0 - LOCK - permissão obtida
+22:45:47 Thread ->MB: 0 - WRITE - Saldo atualizado50
+22:45:47 Thread ->MB: 0 - RELEASE - permissão libertada
+22:45:47 Thread ->MAIN - RESULT - Saldo final: 50
+22:46:26 Thread ->MAIN - SYSTEM_START - Cenário 2
+22:46:26 Thread ->Vitima - LOCK_TRY - Validando origem: Cliente B
+22:46:26 Thread ->Hacker - LOCK_TRY - Validando origem: Cliente A
+22:46:26 Thread ->Vitima - LOCK_HELD - Origem bloqueada: Cliente B
+22:46:26 Thread ->Hacker - LOCK_HELD - Origem bloqueada: Cliente A
+22:46:26 Thread ->Vitima - LOCK_TRY - A tentar validar destino: Cliente A
+22:46:26 Thread ->Hacker - LOCK_TRY - A tentar validar destino: Cliente B
+22:46:32 Thread ->MAIN - ALERT - TIMEOUT: Deadlock detetado
+22:46:32 Thread ->Hacker - INTERRUPT - Transferência abortada.
+22:46:32 Thread ->Vitima - INTERRUPT - Transferência abortada.
+22:47:02 Thread ->MAIN - SYSTEM_START - Cenário 2
+22:47:02 Thread ->Agente-1 - LOCK_TRY - A verificar conta:  Cliente A
+22:47:02 Thread ->Agente-2 - LOCK_TRY - A verificar conta:  Cliente A
+22:47:02 Thread ->Agente-1 - LOCK_HELD - Conta validada: Cliente A
+22:47:02 Thread ->Agente-1 - LOCK_TRY - A verificar conta Cliente B
+22:47:02 Thread ->Agente-1 - SUCCESS - Transferência realizada com sucesso
+22:47:02 Thread ->Agente-1 - RELEASE - Libertar conta Cliente B
+22:47:02 Thread ->Agente-2 - ALERT_STARVATION - Alerta, tempo de espera anormal221 possivel starvation
+22:47:02 Thread ->Agente-2 - LOCK_HELD - Conta validada: Cliente A
+22:47:02 Thread ->Agente-1 - RELEASE - Libertar conta Cliente A
+22:47:03 Thread ->Agente-2 - LOCK_TRY - A verificar conta Cliente B
+22:47:03 Thread ->Agente-2 - SUCCESS - Transferência realizada com sucesso
+22:47:03 Thread ->Agente-2 - RELEASE - Libertar conta Cliente B
+22:47:03 Thread ->Agente-2 - RELEASE - Libertar conta Cliente A
+22:47:03 Thread ->MAIN - SUCCESS - Execução terminada
+22:47:50 Thread ->MAIN - SYSTEM_START - Cenário 3
+22:47:50 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:50 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:50 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:50 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-Normal - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->MAIN - SUCCESS - Cliente Normal executou com sucesso 
+22:47:51 Thread ->Cliente-VIP-0 - INTERRUPT - Interrompida
+22:47:51 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-1 - INTERRUPT - Interrompida
+22:47:51 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-2 - INTERRUPT - Interrompida
+22:47:51 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:51 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:52 Thread ->Cliente-VIP-2 - WORK - A Analisar o pedido de crédito: 
+22:47:53 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:53 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:53 Thread ->Cliente-VIP-1 - WORK - A Analisar o pedido de crédito: 
+22:47:53 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:53 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:47:53 Thread ->Cliente-VIP-0 - WORK - A Analisar o pedido de crédito: 
+22:48:38 Thread ->MAIN - SYSTEM_START - Cenário 3
+22:48:38 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:38 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:38 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:38 Thread ->Cliente-Normal - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->MAIN - SUCCESS - Cliente Normal executou com sucesso 
+22:48:39 Thread ->Cliente-VIP-0 - INTERRUPT - Cliente saiu da fila
+22:48:39 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-1 - INTERRUPT - Cliente saiu da fila
+22:48:39 Thread ->Cliente-VIP-2 - INTERRUPT - Cliente saiu da fila
+22:48:39 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:39 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:40 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:41 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:41 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:41 Thread ->Cliente-VIP-0 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:41 Thread ->Cliente-VIP-1 - WORK - Atendimento de Crédito em curso (Seguro)
+22:48:41 Thread ->Cliente-VIP-2 - WORK - Atendimento de Crédito em curso (Seguro)

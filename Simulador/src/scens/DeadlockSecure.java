@@ -1,6 +1,6 @@
 package scens;
 import monitor.eBPFMonitor;
-import resources.ServerResource;
+import resources.CarteiraCliente;
 
 /**
  * Worker seguro
@@ -9,19 +9,33 @@ import resources.ServerResource;
  * adquire o menor primeiro, sendo a = menor, b = maior
  */
 public class DeadlockSecure implements Runnable{
-    private ServerResource a, b;
+    /** A carteira que será bloqueada em primeiro lugar (a menor alfabeticamente). */
+    private CarteiraCliente origem, destino;
+
+    /** Identificador da operação/transação. */
     private String id;
 
-    public DeadlockSecure(String id, ServerResource r1, ServerResource r2) {
+    /**
+     * Instancia uma nova transferência segura.
+     * <p>
+     * O construtor aplica imediatamente a lógica de ordenação: compara os nomes dos titulares
+     * e atribui a carteira "menor" à variável {@code origem} (primeiro lock) e a "maior"
+     * à variável {@code destino} (segundo lock).
+     *
+     * @param id Identificador da thread.
+     * @param r1 Uma das carteiras envolvidas na transação.
+     * @param r2 A outra carteira envolvida.
+     */
+    public DeadlockSecure(String id, CarteiraCliente r1, CarteiraCliente r2) {
         this.id = id;
 
         //vai comparar os nomes para decidir quem bloqueia 1
-        if (r1.getNome().compareTo(r2.getNome()) < 0) {
-            this.a = r1;
-            this.b = r2;
+        if (r1.getTitular().compareTo(r2.getTitular()) < 0) {
+            this.origem = r1;
+            this.destino = r2;
         } else {
-            this.a = r2;
-            this.b = r1;
+            this.origem = r2;
+            this.destino = r1;
         }
     }
 
@@ -32,31 +46,31 @@ public class DeadlockSecure implements Runnable{
 
         try {
             // 1. Adquire sempre o recurso "Menor" primeiro
-            monitor.log(threadName, "LOCK_TRY", "Ordenação forçada:  " + a.getNome());
-            a.getSem().acquire();
-            monitor.log(threadName, "LOCK_HELD", "Obteve " + a.getNome());
+            monitor.log(threadName, "LOCK_TRY", "A verificar conta:  " + origem.getTitular());
+            origem.getLock().acquire();
+            monitor.log(threadName, "LOCK_HELD", "Conta validada: " + origem.getTitular());
 
             // Mesmo com sleep, o deadlock não ocorre porque a outra thread também está à espera do "Menor" ou já o tem.
             Thread.sleep(100);
 
             // 2. Adquire o recurso "Maior"
-            monitor.log(threadName, "LOCK_TRY", "Ordenação forçada: A tentar " + b.getNome());
-            b.getSem().acquire();
+            monitor.log(threadName, "LOCK_TRY", "A verificar conta " + destino.getTitular());
+            destino.getLock().acquire();
 
             try {
-                monitor.log(threadName, "SUCCESS", "ACESSO SEGURO a ambos os recursos!");
+                monitor.log(threadName, "SUCCESS", "Transferência realizada com sucesso");
                 Thread.sleep(100);
             } finally {
-                b.getSem().release();
-                monitor.log(threadName, "RELEASE", "Libertou " + b.getNome());
+                destino.getLock().release();
+                monitor.log(threadName, "RELEASE", "Libertar conta " + destino.getTitular());
             }
 
         } catch (InterruptedException e) {
-            monitor.log(threadName, "INTERRUPT", "Interrompida.");
+            monitor.log(threadName, "INTERRUPT", "Transferência abortada.");
         } finally {
             // Libertar o primeiro recurso
-            a.getSem().release();
-            monitor.log(threadName, "RELEASE", "Libertou " + a.getNome());
+            origem.getLock().release();
+            monitor.log(threadName, "RELEASE", "Libertar conta " + origem.getTitular());
         }
     }
 }

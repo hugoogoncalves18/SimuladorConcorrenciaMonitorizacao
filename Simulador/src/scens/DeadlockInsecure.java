@@ -1,59 +1,67 @@
 package scens;
 
 import monitor.eBPFMonitor;
-import resources.ServerResource;
+import resources.CarteiraCliente;
 
 /**
- * Worker inseguro, suscetivel a deadlock
+ * Worker inseguro, suscetível a deadlock.
+ * Simula uma transferência bancária sem ordem de bloqueio definida.
  */
 public class DeadlockInsecure implements Runnable {
-    private ServerResource a, b;
+    /** Carteira de onde os fundos serão retirados. */
+    private CarteiraCliente origem, destino;
+
+    /** Identificador da operação. */
     private String id;
 
     /**
      * Construtor
      * @param id Identificador da Thread
-     * @param r1 primeiro recurso
-     * @param r2 segundo recurso
+     * @param r1 Carteira de origem
+     * @param r2 Carteira de destino
      */
-    public DeadlockInsecure(String id, ServerResource r1, ServerResource r2) {
+    public DeadlockInsecure(String id, CarteiraCliente r1, CarteiraCliente r2) {
         this.id = id;
-        this.a = r1;
-        this.b = r2;
+        this.origem = r1;
+        this.destino = r2;
     }
 
+/**
+ * Executa a tentativa de transferência.
+ * <p>
+ * O fluxo de execução demonstra a falha:
+ */
     @Override
     public void run() {
         String nomeThread = Thread.currentThread().getName();
         eBPFMonitor monitor = eBPFMonitor.getInstance();
 
         try{
-            //tenta obter o primeiro recurso
-            monitor.log(nomeThread, "LOCK_TRY", "A tentar adquirir recurso" + a);
-            a.getSem().acquire();
-            monitor.log(nomeThread, "LOCK_HELD", "Obteve: " + a.getNome());
+            // 1. Bloqueia carteira de origem
+            monitor.log(nomeThread, "LOCK_TRY", "Validando origem: " + origem.getTitular());
+            origem.getLock().acquire();
+            monitor.log(nomeThread, "LOCK_HELD", "Origem bloqueada: " + origem.getTitular());
 
-            //pausa para aumentar a probabilidade de bloqueio
+            // Pausa para garantir que a outra thread bloqueia a outra carteira (provocando Deadlock)
             Thread.sleep(500);
 
-            //tenta obter o segundo recurso
-            monitor.log(nomeThread, "LOCK_TRY", "A tentar adquirir recurso" + b);
-            b.getSem().acquire();
+            // 2. Tenta bloquear carteira de destino
+            monitor.log(nomeThread, "LOCK_TRY", "A tentar validar destino: " + destino.getTitular());
+            destino.getLock().acquire();
 
             try{
-                monitor.log(nomeThread, "SUCCESS", "Acesso concedido a ambos os recursos");
+                monitor.log(nomeThread, "SUCCESS", "Transferência realizada com sucesso!");
                 Thread.sleep(100);
             } finally {
-                b.getSem().release();
+                destino.getLock().release();
             }
-            } catch (InterruptedException e) {
-            monitor.log(nomeThread, "INTERRUPT", "Thread interrompida");
+        } catch (InterruptedException e) {
+            monitor.log(nomeThread, "INTERRUPT", "Transferência abortada.");
         } finally {
-            //Se ocorrer deadlock não atinge esta linha
-            if (a.getSem().availablePermits() == 0) {
-                a.getSem().release();
+            // Liberta a origem caso tenha ficado presa
+            if (origem.getLock().availablePermits() == 0) {
+                origem.getLock().release();
             }
         }
-        }
+    }
 }
-
