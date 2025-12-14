@@ -1,0 +1,60 @@
+1. Introdução & Contexto
+[ ] Objetivo: Criar um simulador bancário crítico onde a falha de concorrência = prejuízo financeiro ou paragem de serviço.
+
+[ ] Ameaças: Mencionar a Tríade CIA:
+
+Integridade (Race Condition/Corrupção de Saldo).
+
+Disponibilidade (Deadlock e Starvation/DoS).
+
+[ ] Inovação: Destacar que não é só um simulador, mas inclui defesa ativa (IPS) e observabilidade (SIEM/eBPF).
+
+
+2. Arquitetura Técnica
+[ ] Padrão eBPF: Explicar o Monitor como um Singleton que observa tudo sem interferir na lógica de negócio (sidecar pattern).
+
+[ ] Estrutura de Classes:
+
+Resources: ContaConjunta, CarteiraCliente, DepartamentoCredito.
+
+Workers: As threads (Agentes, Clientes, Terminais MB).
+
+[ ] Tecnologia de Monitorização:
+
+SIEM: Logs estruturados em JSON (para Splunk/Elastic).
+
+IPS: Capacidade de "matar" threads (SecurityViolationException) baseado em SLA.
+
+
+3. Cenário 1: Race Condition (Integridade)
+[ ] O Problema (Ataque): Vulnerabilidade TOCTOU (Time-of-Check to Time-of-Use). Duas threads leem saldo 10€ e escrevem 20€ (perda de depósitos).
+
+[ ] A Solução (Defesa): Exclusão Mútua com Semáforos (Mutex). Garantia de atomicidade na transação.
+
+[ ] Evidência: Mostrar log JSON onde o saldo final inseguro é incorreto vs. saldo seguro.
+
+
+4. Cenário 2: Deadlock (Disponibilidade)
+[ ] O Problema (Ataque): Transferências Cruzadas (A->B e B->A). Violação das Condições de Coffman (especificamente Circular Wait).
+
+[ ] A Solução (Defesa): Estratégia de Ordenação de Recursos.
+
+Explicar: "Bloquear sempre a carteira com 'menor ID/Nome' primeiro, independentemente da direção da transferência".
+
+[ ] Evidência: Log do IPS a detetar Timeout ou log de sucesso no modo seguro.
+
+
+5. Cenário 3: Starvation (Disponibilidade/QoS)
+[ ] O Problema (Ataque): Clientes VIP monopolizam a CPU. Negação de Serviço ao Cliente Normal.
+
+[ ] A Solução (Defesa): Política de Fairness (Justiça).
+
+Explicar: new Semaphore(1, true) cria uma fila FIFO real, ignorando prioridades de thread do SO.
+
+[ ] O "Kill Switch": Mostrar como o Monitor deteta latência > 200ms e ativa o bloqueio (IPS).
+
+
+6. Conclusão e Futuro
+[ ] Resumir que a segurança em sistemas concorrentes depende de Sincronização, Ordenação e Políticas Justas.
+
+[ ] Referir que o sistema está pronto para integração com dashboards reais (devido ao JSON).
