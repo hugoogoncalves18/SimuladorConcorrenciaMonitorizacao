@@ -8,189 +8,178 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Exceção de segurança personalizada utilizada para interromper a execução de uma thread.
- * <p>
- * Esta exceção estende {@link RuntimeException} (unchecked) para simular o comportamento
- * do Kernel a enviar um sinal <b>SIGKILL</b> a um processo mal comportado, forçando
- * a sua paragem imediata sem necessidade de try-catch na lógica de negócio padrão.
  */
 class SecurityViolationException extends RuntimeException {
-    /**
-     * Instancia uma nova violação de segurança.
-     * @param msg Mensagem descritiva do motivo do bloqueio (ex: "Violação de SLA").
-     */
     public SecurityViolationException(String msg) { super(msg); }
 }
 
 /**
  * Monitor de Sistema Simulado (estilo eBPF) com capacidades de SIEM e IPS.
- * Esta classe implementa o padrão <b>Singleton</b> e atua como um observador centralizado
- * de todas as operações críticas do sistema bancário.
- * <b>Funcionalidades Principais:</b>
+ * <p>
+ * Funcionalidades Principais:
  * <ul>
- * <li><b>Logging SIEM (JSON):</b> Gera logs estruturados prontos para ingestão em ferramentas como Splunk ou ElasticSearch.</li>
- * <li><b>IPS (Intrusion Prevention System):</b> Deteta anomalias em tempo real e termina threads agressoras.</li>
- * <li><b>Análise Comportamental:</b> Monitoriza tempos de espera para detetar ataques de DoS ou Starvation.</li>
+ * <li><b>Consola Limpa / Modo Silencioso:</b> Adaptável para testes de carga (Stress Tests).</li>
+ * <li><b>Logging Híbrido:</b> JSON centralizado para SIEM + Ficheiros de Alerta individuais por Thread.</li>
+ * <li><b>IPS:</b> Deteta anomalias e termina threads agressoras.</li>
  * </ul>
  */
 public class eBPFMonitor {
 
-    /** Instância única do Monitor (Singleton). */
     private static eBPFMonitor instance;
+    private PrintWriter writer; // Log geral (JSON)
 
-    /** Escritor para o ficheiro de logs persistente. */
-    private PrintWriter writer;
+    // Flag para controlar a saída na consola durante Stress Tests
+    private boolean silentMode = false;
 
-    /** * Mapa de estatísticas de acesso.
-     * Chave: Nome da Thread | Valor: Quantidade de acessos a recursos.
-     */
+    // Estatísticas e Timers
     private final Map<String, Integer> accessStats = new ConcurrentHashMap<>();
-
-    /** * Mapa de temporizadores para deteção de latência.
-     * Chave: Nome da Thread | Valor: Timestamp (ms) do início do pedido.
-     */
     private final Map<String, Long> waitTimers = new ConcurrentHashMap<>();
+    private static final long STARVATION_THRESHOLD_MS = 5000;
 
-    /** * Limite de Segurança (SLA - Service Level Agreement).
-     * Se uma thread esperar mais do que este valor (ms), considera-se Starvation/DoS.
-     */
-    private static final long STARVATION_THRESHOLD_MS = 200;
+    //Caminho para a pasta logs
+    private static final String LOG_DIR = "logs/";
 
-    /**
-     * Construtor privado para garantir o padrão Singleton.
-     * Inicializa o sistema de escrita de logs no ficheiro "eBPFlogs.json".
-     */
     private eBPFMonitor() {
         try {
-            FileWriter fw = new FileWriter("eBPFlogs.json", true);
+
+            File directory = new File(LOG_DIR);
+            if(!directory.exists()) {
+                directory.mkdirs();
+            }
+            // Ficheiro geral do sistema (comportamento completo em JSON)
+            FileWriter fw = new FileWriter(LOG_DIR + "eBPFlogs.json", true);
             writer = new PrintWriter(fw, true);
         } catch (IOException e) {
             System.err.println("CRITICAL: Falha ao iniciar sistema de logs.");
         }
     }
 
-    /**
-     * Obtém a instância única do Monitor eBPF.
-     * @return A instância singleton de {@link eBPFMonitor}.
-     */
     public static synchronized eBPFMonitor getInstance() {
         if (instance == null) instance = new eBPFMonitor();
         return instance;
     }
 
     /**
-     * Núcleo do Monitor: Regista eventos, analisa comportamentos e atua sobre ameaças.
-     * <p>
-     * Este método realiza 4 passos fundamentais:
-     * <ol>
-     * <li><b>Enriquecimento:</b> Adiciona Timestamp e classifica a Severidade do evento.</li>
-     * <li><b>Logging SIEM:</b> Formata o evento em JSON e escreve no ficheiro.</li>
-     * <li><b>Análise:</b> Verifica se o evento viola regras de anomalia (ex: latência excessiva).</li>
-     * <li><b>IPS (Atuação):</b> Se a ação for BLOCK, termina a thread invocadora imediatamente.</li>
-     * </ol>
-     *
-     * @param threadName Nome da thread que gerou o evento (ex: "Cliente-VIP-1").
-     * @param eventType Tipo de evento (ex: "LOCK_TRY", "WORK", "ALERT_STARVATION").
-     * @param message Descrição detalhada do evento.
-     * @throws SecurityViolationException Se o IPS decidir bloquear a thread.
+     * Útil para testes de carga onde o output da consola degrada a performance.
+     * @param silent true para esconder logs informativos da consola.
      */
-    public synchronized void log(String threadName, String eventType, String message) {
-        // 1. Enriquecimento de Dados (Timestamp)
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    public void setSilentMode(boolean silent) {
+        this.silentMode = silent;
+    }
 
-        // 2. Classificação de Segurança (Severity & Action)
-        String severity = "INFO";
-        String action = "ALLOW";
+    /**
+     * Regista eventos, gere logs e atua sobre ameaças.
+     * Utiliza {@link EventType} para maior segurança de tipos e código limpo.
+     *
+     * @param threadName Nome da thread.
+     * @param eventType Tipo de evento (Enum).
+     * @param message Mensagem descritiva.
+     */
+    public synchronized void log(String threadName, EventType eventType, String message) {
+        // 1. Timestamp curto para a consola, longo para o JSON
+        String timeFull = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
-        // Define severidade baseada no tipo de evento
-        if (eventType.contains("ALERT") || eventType.equals("ERROR")) {
-            severity = "HIGH";
-        }
-        if (eventType.equals("DEADLOCK_CONFIRMED") || eventType.equals("ALERT_STARVATION")) {
-            severity = "CRITICAL";
-            action = "BLOCK";
-        }
+        // 2. CONSOLA INTELIGENTE (Silent Mode)
+        // Se estiver em silentMode, só imprimimos se for CRÍTICO (Deadlocks ou Starvation confirmados)
+        boolean isCritical = (eventType == EventType.DEADLOCK_DETECTED ||
+                eventType == EventType.ALERT_STARVATION ||
+                eventType == EventType.IPS_BLOCK);
 
-        // 3. Formatação SIEM (JSON)
+        if (!silentMode || isCritical) {
+            System.out.println(threadName + " -> " + message);        }
+
+        // 3. Lógica de Severidade e Ação
+        String severity = determineSeverity(eventType);
+        String action = (isCritical) ? "BLOCK" : "ALLOW";
+
+        // 4. LOG GERAL (JSON para SIEM) - Sempre escrito, independente do modo silencioso
         String jsonLog = String.format(
                 "{\"timestamp\": \"%s\", \"severity\": \"%s\", \"event\": \"%s\", \"thread\": \"%s\", \"msg\": \"%s\", \"action\": \"%s\"}",
-                timestamp, severity, eventType, threadName, message, action
+                timeFull, severity, eventType, threadName, message, action
         );
-
-        // 4. Output (Consola + Ficheiro)
-        System.out.println(jsonLog);
         if (writer != null) writer.println(jsonLog);
 
-        // 5. Análise Comportamental
-        if (!eventType.startsWith("ALERT")) {
+        // 5. SEGREGAÇÃO DE LOGS (Requisito: Alertas por utilizador)
+        // Se for HIGH ou CRITICAL, escreve também num ficheiro exclusivo desta thread
+        if (severity.equals("HIGH") || severity.equals("CRITICAL")) {
+            writeUserAlertLog(threadName, jsonLog);
+        }
+
+        // 6. Análise Comportamental (Não analisa os próprios alertas para evitar loop)
+        if (!eventType.name().startsWith("ALERT")) {
             updateStats(threadName, eventType);
             checkAnomalies(threadName, eventType);
         }
 
-        // 6. IPS - ATUAÇÃO ATIVA
+        // 7. IPS - Atuação
         if (action.equals("BLOCK")) {
-            killThread(threadName, "Violação de SLA de Segurança detetada: " + eventType);
+            killThread(threadName, "Violação de SLA detectada: " + eventType);
         }
     }
 
-    /**
-     * Simula a atuação do Kernel ao enviar um sinal de terminação forçada (SIGKILL).
-     * * @param threadId O identificador da thread a terminar.
-     * @param reason O motivo da terminação para auditoria.
-     * @throws SecurityViolationException Exceção unchecked que força a saída da stack de execução.
-     */
-    private void killThread(String threadId, String reason) {
-        throw new SecurityViolationException("IPS ACTION: Thread " + threadId + " terminada. Motivo: " + reason);
+    // --- Métodos Auxiliares ---
+
+    private String determineSeverity(EventType type) {
+        if (type == EventType.DEADLOCK_DETECTED || type == EventType.ALERT_STARVATION || type == EventType.IPS_BLOCK) {
+            return "CRITICAL";
+        }
+        if (type == EventType.ERROR || type == EventType.INTERRUPT) {
+            return "HIGH";
+        }
+        return "INFO";
     }
 
     /**
-     * Atualiza os contadores estatísticos de acesso aos recursos.
-     * * @param thread Nome da thread.
-     * @param type Tipo de evento. Apenas eventos de trabalho efetivo ou sucesso são contabilizados.
+     * Escreve num ficheiro separado específico para a thread em questão.
+     * Útil para isolar o comportamento de um utilizador problemático.
      */
-    private void updateStats(String thread, String type) {
-        if (type.equals("WORK") || type.equals("LOCK_HELD") || type.equals("SUCCESS")) {
+    private void writeUserAlertLog(String threadName, String logContent) {
+        // Limpa caracteres especiais do nome da thread para criar um ficheiro válido
+        String safeName = threadName.replaceAll("[^a-zA-Z0-9.-]", "_");
+        String fileName = LOG_DIR + "alert_" + safeName + ".log";
+
+        try (FileWriter fw = new FileWriter(fileName, true);
+             PrintWriter pw = new PrintWriter(fw, true)) {
+            pw.println(logContent);
+        } catch (IOException e) {
+            System.err.println("Erro ao escrever log individual: " + e.getMessage());
+        }
+    }
+
+    private void killThread(String threadId, String reason) {
+        throw new SecurityViolationException("IPS ACTION: " + threadId + " terminada. " + reason);
+    }
+
+    private void updateStats(String thread, EventType type) {
+        // Usa o Enum para comparação (mais eficiente e limpo)
+        if (type == EventType.WORK || type == EventType.LOCK_ACQUIRED || type == EventType.SUCCESS) {
             accessStats.put(thread, accessStats.getOrDefault(thread, 0) + 1);
         }
     }
 
-    /**
-     * Verifica anomalias temporais (Latência).
-     * <p>
-     * Calcula o tempo decorrido entre um pedido de recurso (WAIT/LOCK_TRY) e a sua obtenção.
-     * Se o tempo exceder o {@code STARVATION_THRESHOLD_MS}, gera um alerta de segurança.
-     * * @param thread Nome da thread.
-     * @param type Tipo de evento atual.
-     */
-    private void checkAnomalies(String thread, String type) {
+    private void checkAnomalies(String thread, EventType type) {
         long now = System.currentTimeMillis();
 
-        // Início da espera
-        if (type.equals("WAIT") || type.equals("LOCK_TRY")) {
+        if (type == EventType.WAIT) {
             waitTimers.put(thread, now);
         }
-        // Fim da espera (Aquisição)
-        else if (type.equals("WORK") || type.equals("LOCK_HELD") || type.equals("SUCCESS")) {
+        else if (type == EventType.LOCK_ACQUIRED) {
             if (waitTimers.containsKey(thread)) {
-                long startWait = waitTimers.remove(thread);
-                long duration = now - startWait;
+                long duration = now - waitTimers.remove(thread);
 
-                // Regra de Starvation
                 if (duration > STARVATION_THRESHOLD_MS) {
-                    log(thread, "ALERT_STARVATION", "Tempo de espera excessivo: " + duration + "ms");
+                    // Chama o log recursivamente com o evento de Alerta
+                    log(thread, EventType.ALERT_STARVATION, "Latência excessiva: " + duration + "ms");
                 }
             }
         }
     }
 
-    /**
-     * Gera e imprime o relatório final agregado na consola.
-     * Limpa as estatísticas após a impressão.
-     */
     public synchronized void print() {
-        System.out.println("\n=== RELATÓRIO SIEM (Estatísticas Agregadas) ===");
+        System.out.println("\n=== Resumo de Execução ===");
         if (accessStats.isEmpty()) System.out.println("Sem dados registados.");
         else accessStats.forEach((k, v) -> System.out.println("THREAD: " + k + " | ACESSOS: " + v));
-        System.out.println("===============================================\n");
+        System.out.println("==========================\n");
         accessStats.clear();
         waitTimers.clear();
     }

@@ -1,4 +1,5 @@
 package scens;
+import monitor.EventType;
 import monitor.eBPFMonitor;
 import resources.CarteiraCliente;
 
@@ -46,31 +47,31 @@ public class DeadlockSecure implements Runnable{
 
         try {
             // 1. Adquire sempre o recurso "Menor" primeiro
-            monitor.log(threadName, "LOCK_TRY", "A verificar conta:  " + origem.getTitular());
+            monitor.log(threadName, EventType.WAIT, "Aguardar origem (  " + origem.getTitular() + ")");
             origem.getLock().acquire();
-            monitor.log(threadName, "LOCK_HELD", "Conta validada: " + origem.getTitular());
+            monitor.log(threadName, EventType.LOCK_ACQUIRED, "Conta validada: " + origem.getTitular());
 
             // Mesmo com sleep, o deadlock não ocorre porque a outra thread também está à espera do "Menor" ou já o tem.
             Thread.sleep(100);
 
             // 2. Adquire o recurso "Maior"
-            monitor.log(threadName, "LOCK_TRY", "A verificar conta " + destino.getTitular());
+            monitor.log(threadName, EventType.WAIT, "Aguardar destino ( " + destino.getTitular() + ")");
             destino.getLock().acquire();
 
             try {
-                monitor.log(threadName, "SUCCESS", "Transferência realizada com sucesso");
+                monitor.log(threadName, EventType.SUCCESS, "Transferência realizada com sucesso");
                 Thread.sleep(100);
             } finally {
                 destino.getLock().release();
-                monitor.log(threadName, "RELEASE", "Libertar conta " + destino.getTitular());
+                monitor.log(threadName, EventType.LOCK_RELEASE, "Libertou destino " + destino.getTitular());
             }
 
         } catch (InterruptedException e) {
-            monitor.log(threadName, "INTERRUPT", "Transferência abortada.");
+            monitor.log(threadName, EventType.INTERRUPT, "Transferência abortada.");
         } finally {
             // Libertar o primeiro recurso
             origem.getLock().release();
-            monitor.log(threadName, "RELEASE", "Libertar conta " + origem.getTitular());
+            monitor.log(threadName, EventType.LOCK_RELEASE, "Libertou origem" + origem.getTitular());
         }
     }
 }

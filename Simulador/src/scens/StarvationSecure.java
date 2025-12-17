@@ -1,4 +1,5 @@
 package scens;
+import monitor.EventType;
 import monitor.eBPFMonitor;
 import resources.DepartamentoCredito;
 
@@ -30,20 +31,24 @@ public class StarvationSecure implements Runnable {
     @Override
     public void run() {
         String name = Thread.currentThread().getName();
+        eBPFMonitor monitor = eBPFMonitor.getInstance();
+
         // Loop de tentativas de pedido de crédito
         for(int i = 0; i < loopCount; i++) {
             try{
+                monitor.log(name, EventType.WAIT, "A entrar na fila...");
                 // Tenta entrar no guiché (que agora é FIFO/Justo)
                 departamento.getSem().acquire();
 
                 try{
-                    eBPFMonitor.getInstance().log(name, "WORK", "Atendimento de Crédito em curso (Seguro)");
+                    monitor.log(name, EventType.LOCK_ACQUIRED, "Atendimento iniciado");
                     Thread.sleep(100);
                 } finally {
                     departamento.getSem().release();
+                    monitor.log(name, EventType.LOCK_RELEASE, "Atendimento concluído");
                 }
             } catch (InterruptedException e) {
-                eBPFMonitor.getInstance().log(name, "INTERRUPT", "Cliente saiu da fila");
+                monitor.log(name, EventType.INTERRUPT, "Saiu da fila");
                 return;
             }
         }

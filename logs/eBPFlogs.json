@@ -1,0 +1,39 @@
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 1 [Seguro: false]", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "INIT", "thread": "MB-1", "msg": "Iniciar depósito de 10€", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-1", "msg": "A ler saldo (Leitura Insegura)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "INIT", "thread": "MB-3", "msg": "Iniciar depósito de 10€", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-3", "msg": "A ler saldo (Leitura Insegura)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "INIT", "thread": "MB-2", "msg": "Iniciar depósito de 10€", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-2", "msg": "A ler saldo (Leitura Insegura)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "INIT", "thread": "MB-0", "msg": "Iniciar depósito de 10€", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-0", "msg": "A ler saldo (Leitura Insegura)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "INIT", "thread": "MB-4", "msg": "Iniciar depósito de 10€", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-4", "msg": "A ler saldo (Leitura Insegura)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-0", "msg": "Saldo atualizado para: 10", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-4", "msg": "Saldo atualizado para: 10", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-3", "msg": "Saldo atualizado para: 10", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-2", "msg": "Saldo atualizado para: 10", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "WORK", "thread": "MB-1", "msg": "Saldo atualizado para: 10", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:08:56", "severity": "INFO", "event": "RESULT", "thread": "MAIN", "msg": "Saldo final: 10", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:01", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 2 [Seguro: true]", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "WAIT", "thread": "Agente-2", "msg": "Aguardar origem (  Cliente A)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "WAIT", "thread": "Agente-1", "msg": "Aguardar origem (  Cliente A)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Agente-2", "msg": "Conta validada: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "WAIT", "thread": "Agente-2", "msg": "Aguardar destino ( Cliente B)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "SUCCESS", "thread": "Agente-2", "msg": "Transferência realizada com sucesso", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-2", "msg": "Libertou destino Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Agente-1", "msg": "Conta validada: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-2", "msg": "Libertou origemCliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "WAIT", "thread": "Agente-1", "msg": "Aguardar destino ( Cliente B)", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "SUCCESS", "thread": "Agente-1", "msg": "Transferência realizada com sucesso", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-1", "msg": "Libertou destino Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-1", "msg": "Libertou origemCliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:03", "severity": "INFO", "event": "SUCCESS", "thread": "MAIN", "msg": "Execução terminada", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 2 [Seguro: false]", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "WAIT", "thread": "Hacker", "msg": "Validando origem: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "WAIT", "thread": "Vitima", "msg": "Validando origem: Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Vitima", "msg": "Origem bloqueada: Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Hacker", "msg": "Origem bloqueada: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "WAIT", "thread": "Vitima", "msg": "A tentar validar destino: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "WAIT", "thread": "Hacker", "msg": "A tentar validar destino: Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-17 01:09:15", "severity": "CRITICAL", "event": "DEADLOCK_DETECTED", "thread": "MAIN", "msg": "TIMEOUT: Deadlock confirmado", "action": "BLOCK"}

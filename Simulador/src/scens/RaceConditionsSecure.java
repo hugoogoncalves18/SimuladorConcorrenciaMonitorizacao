@@ -1,5 +1,6 @@
 package scens;
 
+import monitor.EventType;
 import monitor.eBPFMonitor;
 import resources.ContaConjunta;
 import java.util.Random;
@@ -41,30 +42,32 @@ public class RaceConditionsSecure implements Runnable {
         String nomeThread = Thread.currentThread().getName();
         eBPFMonitor monitor = eBPFMonitor.getInstance();
 
-        monitor.log(nomeThread, "INIT", "A iniciar a transação" + valor);
+        monitor.log(nomeThread, EventType.INIT, "Transferência de: " + valor + " €");
 
         try{
             //solicita permissão
-            monitor.log(nomeThread, "WAIT", "a aguardar");
+            monitor.log(nomeThread, EventType.WAIT, "a aguardar permissão...");
             conta.getMutex().acquire();
 
             try{
-                monitor.log(nomeThread, "LOCK", "permissão obtida");
+                monitor.log(nomeThread, EventType.LOCK_ACQUIRED, "permissão obtida");
                 int saldoTemp = conta.getSaldo();
 
                 //simular latência
                 Thread.sleep(10 + random.nextInt(90));
                 conta.setSaldo(saldoTemp + valor);
 
-                monitor.log(nomeThread, "WRITE", "Saldo atualizado" + conta.getSaldo());
+                monitor.log(nomeThread, EventType.WORK, "Saldo atualizado" + conta.getSaldo());
             } finally {
                 //liberta permissão
                 conta.getMutex().release();
-                monitor.log(nomeThread, "RELEASE", "permissão libertada");
+                monitor.log(nomeThread, EventType.LOCK_RELEASE, "Saiu da conta");
             }
         } catch (InterruptedException e) {
-            monitor.log(nomeThread, "ERROR", "Thread interrompida");
+            monitor.log(nomeThread, EventType.ERROR, "Thread interrompida");
             Thread.currentThread().interrupt();
         }
     }
 }
+
+//Foi alterado todos os tipos de EventType
