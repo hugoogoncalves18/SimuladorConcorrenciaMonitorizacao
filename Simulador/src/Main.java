@@ -132,7 +132,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ContaConjunta conta = new ContaConjunta();
         Thread[] threads = new Thread[5];
-        int valor = 10;
+
+        java.util.Random random = new java.util.Random();
+        int totalEsperado=0;
 
         int tipoDefesa = 1; // 1 = Semáforo (Default)
 
@@ -150,17 +152,20 @@ public class Main {
         System.out.println(">>> Cenário: Depósitos Simultâneos. Modo: " + (seguro ? (tipoDefesa==1?"Semáforo":"Synchronized") : "INSEGURO"));
 
         for (int i = 0; i < 5; i++) {
+            //Gera valor entre 10 e 100
+            int valorAleatorio = 10 + random.nextInt(91);
+            totalEsperado += valorAleatorio;
             Runnable worker;
             if (seguro) {
                 if (tipoDefesa == 2) {
-                    worker = new RaceConditionSynchronized(conta, valor);
+                    worker = new RaceConditionSynchronized(conta, valorAleatorio);
                 } else {
-                    worker = new RaceConditionsSecure(conta, valor);
+                    worker = new RaceConditionsSecure(conta, valorAleatorio);
                 }
             } else {
-                worker = new RaceConditionInsecure(conta, valor);
+                worker = new RaceConditionInsecure(conta, valorAleatorio);
             }
-            threads[i] = new Thread(worker, "MB-" + i);
+            threads[i] = new Thread(worker, "MB- " + i);
             threads[i].start();
         }
 
@@ -168,8 +173,18 @@ public class Main {
             try{ t.join(); } catch (InterruptedException e) {}
         }
 
-        eBPFMonitor.getInstance().log("MAIN", EventType.RESULT, "Saldo final: " + conta.getSaldo());
-        System.out.println("Saldo final: " + conta.getSaldo());
+        System.out.println("\n--- RELATÓRIO FINAL ---");
+        System.out.println("Saldo Esperado (Soma dos depósitos): " + totalEsperado + "€");
+        System.out.println("Saldo Real (Na conta):               " + conta.getSaldo() + "€");
+
+        if (conta.getSaldo() != totalEsperado) {
+            int diferenca = totalEsperado - conta.getSaldo();
+            eBPFMonitor.getInstance().log("MAIN", EventType.ERROR, "FALHA DE INTEGRIDADE: Perderam-se " + diferenca + "€");
+            System.out.println("Estado: DADOS CORROMPIDOS (Perda de " + diferenca + "€)");
+        } else {
+            eBPFMonitor.getInstance().log("MAIN", EventType.RESULT, "Sucesso. Saldo: " + conta.getSaldo());
+            System.out.println("Estado: INTEGRIDADE OK");
+        }
     }
 
     /**

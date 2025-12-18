@@ -37,3 +37,37 @@
 {"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "WAIT", "thread": "Vitima", "msg": "A tentar validar destino: Cliente A", "action": "ALLOW"}
 {"timestamp": "2025-12-17 01:09:09", "severity": "INFO", "event": "WAIT", "thread": "Hacker", "msg": "A tentar validar destino: Cliente B", "action": "ALLOW"}
 {"timestamp": "2025-12-17 01:09:15", "severity": "CRITICAL", "event": "DEADLOCK_DETECTED", "thread": "MAIN", "msg": "TIMEOUT: Deadlock confirmado", "action": "BLOCK"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 1 [Seguro: false]", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "INIT", "thread": "MB- 1", "msg": "Iniciar depósito de 22€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "INIT", "thread": "MB- 3", "msg": "Iniciar depósito de 82€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 3", "msg": "A ler saldo 0€ - vai somar: 82€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "INIT", "thread": "MB- 0", "msg": "Iniciar depósito de 73€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "INIT", "thread": "MB- 2", "msg": "Iniciar depósito de 18€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 2", "msg": "A ler saldo 0€ - vai somar: 18€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 1", "msg": "A ler saldo 0€ - vai somar: 22€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "INIT", "thread": "MB- 4", "msg": "Iniciar depósito de 13€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 0", "msg": "A ler saldo 0€ - vai somar: 73€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 4", "msg": "A ler saldo 0€ - vai somar: 13€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 4", "msg": "Saldo atualizado para: 13", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 1", "msg": "Saldo atualizado para: 22", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 0", "msg": "Saldo atualizado para: 73", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 3", "msg": "Saldo atualizado para: 82", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "INFO", "event": "WORK", "thread": "MB- 2", "msg": "Saldo atualizado para: 18", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:18:48", "severity": "HIGH", "event": "ERROR", "thread": "MAIN", "msg": "FALHA DE INTEGRIDADE: Perderam-se 190€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 1 [Seguro: false]", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "INIT", "thread": "MB- 1", "msg": "Iniciar depósito de 38€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "INIT", "thread": "MB- 0", "msg": "Iniciar depósito de 55€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "INIT", "thread": "MB- 2", "msg": "Iniciar depósito de 59€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 0", "msg": "A ler saldo 0€ - vai somar: 55€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 2", "msg": "A ler saldo 0€ - vai somar: 59€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 1", "msg": "A ler saldo 0€ - vai somar: 38€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "INIT", "thread": "MB- 3", "msg": "Iniciar depósito de 71€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "INIT", "thread": "MB- 4", "msg": "Iniciar depósito de 45€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 3", "msg": "A ler saldo 0€ - vai somar: 71€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 4", "msg": "A ler saldo 0€ - vai somar: 45€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 3", "msg": "Saldo atualizado para: 71", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 4", "msg": "Saldo atualizado para: 45", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 2", "msg": "Saldo atualizado para: 59", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 0", "msg": "Saldo atualizado para: 55", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 1", "msg": "Saldo atualizado para: 38", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:19:41", "severity": "HIGH", "event": "ERROR", "thread": "MAIN", "msg": "FALHA DE INTEGRIDADE: Perderam-se 230€", "action": "ALLOW"}

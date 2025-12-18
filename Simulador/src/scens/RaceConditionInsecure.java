@@ -36,8 +36,9 @@ public class RaceConditionInsecure implements Runnable {
 
         try{
             // Secção critica desprotegida
-            eBPFMonitor.getInstance().log(nomeThread, EventType.WORK, "A ler saldo (Leitura Insegura)");
             int saldoTemp = conta.getSaldo();
+
+            eBPFMonitor.getInstance().log(nomeThread, EventType.WORK, "A ler saldo " + saldoTemp + "€ - vai somar: " + valor + "€");
 
             // processamento
             Thread.sleep(10 + random.nextInt(90));

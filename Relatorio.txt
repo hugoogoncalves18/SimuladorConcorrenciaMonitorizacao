@@ -1,60 +1,43 @@
-1. Introdução & Contexto
-[ ] Objetivo: Criar um simulador bancário crítico onde a falha de concorrência = prejuízo financeiro ou paragem de serviço.
+Mecanismos de Sincronzação comparados
 
-[ ] Ameaças: Mencionar a Tríade CIA:
+Semáforos vs synchronized
 
-Integridade (Race Condition/Corrupção de Saldo).
+Característica -Semáforos (java.util.concurrent),     Monitores (synchronized / wait-notify)
+Abstração-      Alto Nível (API pronta),              Baixo Nível (Primitivas da linguagem)
+Complexidade-   Baixa (acquire()/release())           Média/Alta (Exige lógica manual)
+Fairness (Justiça)- "Automático (new Semaphore(1, true))"      Manual (Implementação de Ticket Lock)
+Performance-    Ligeiro Overhead da API,              Otimizado pela JVM (Intrinsic Locks)
+Uso no Projeto- Cenários Padrão,                      Cenários de Comparação e Controle Fino
 
-Disponibilidade (Deadlock e Starvation/DoS).
-
-[ ] Inovação: Destacar que não é só um simulador, mas inclui defesa ativa (IPS) e observabilidade (SIEM/eBPF).
-
-
-2. Arquitetura Técnica
-[ ] Padrão eBPF: Explicar o Monitor como um Singleton que observa tudo sem interferir na lógica de negócio (sidecar pattern).
-
-[ ] Estrutura de Classes:
-
-Resources: ContaConjunta, CarteiraCliente, DepartamentoCredito.
-
-Workers: As threads (Agentes, Clientes, Terminais MB).
-
-[ ] Tecnologia de Monitorização:
-
-SIEM: Logs estruturados em JSON (para Splunk/Elastic).
-
-IPS: Capacidade de "matar" threads (SecurityViolationException) baseado em SLA.
+Destaque técnico
+Explica que para resolver o Starvation com wait/notify,
+tiveste de implementar um algoritmo de "Senhas" (Ticket Lock) manualmente,
+provando que dominas a lógica de exclusão mútua e não apenas o uso de bibliotecas prontas.
 
 
-3. Cenário 1: Race Condition (Integridade)
-[ ] O Problema (Ataque): Vulnerabilidade TOCTOU (Time-of-Check to Time-of-Use). Duas threads leem saldo 10€ e escrevem 20€ (perda de depósitos).
 
-[ ] A Solução (Defesa): Exclusão Mútua com Semáforos (Mutex). Garantia de atomicidade na transação.
+Análise de escalabilidade
 
-[ ] Evidência: Mostrar log JSON onde o saldo final inseguro é incorreto vs. saldo seguro.
+-Objetivo: Validar a robustez do sistema sob carga elevada (Cenário 4).
 
+Metodologia: "Foram lançadas N threads (ex: 1000) simultâneas para simular um pico de tráfego (Black Friday Bancária)."
 
-4. Cenário 2: Deadlock (Disponibilidade)
-[ ] O Problema (Ataque): Transferências Cruzadas (A->B e B->A). Violação das Condições de Coffman (especificamente Circular Wait).
+O desafio da I/O - explicar que foi necessária a criação do SilentMode
+Para testar a performance real das threads, o output foi suprimido, mantendo apenas a gravação em disco assíncrona/bufferizada."
 
-[ ] A Solução (Defesa): Estratégia de Ordenação de Recursos.
+Resultados: Apresenta os dados que o RunStressTest cospe no final:
 
-Explicar: "Bloquear sempre a carteira com 'menor ID/Nome' primeiro, independentemente da direção da transferência".
-
-[ ] Evidência: Log do IPS a detetar Timeout ou log de sucesso no modo seguro.
+-Throughput: X Transações/segundo.
+-Integridade: Saldo Final Esperado vs Real (Sucesso/Falha).
 
 
-5. Cenário 3: Starvation (Disponibilidade/QoS)
-[ ] O Problema (Ataque): Clientes VIP monopolizam a CPU. Negação de Serviço ao Cliente Normal.
 
-[ ] A Solução (Defesa): Política de Fairness (Justiça).
-
-Explicar: new Semaphore(1, true) cria uma fila FIFO real, ignorando prioridades de thread do SO.
-
-[ ] O "Kill Switch": Mostrar como o Monitor deteta latência > 200ms e ativa o bloqueio (IPS).
+Segurança e Resiliência(IPS)º
+-Em alguns casos como deadlock inseguro, na consola dá um erro fatal, que é gerado
+automaticamente pelo sistema para simular um crash do deadlock
 
 
-6. Conclusão e Futuro
-[ ] Resumir que a segurança em sistemas concorrentes depende de Sincronização, Ordenação e Políticas Justas.
+Novas alterações
+-Foi criado novos métodos para synchronized
+-Foi criado uma nova classe para funcionar com o starvationSybchronized
 
-[ ] Referir que o sistema está pronto para integração com dashboards reais (devido ao JSON).
