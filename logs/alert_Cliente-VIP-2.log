@@ -1,0 +1,1 @@
+{"timestamp": "2025-12-18 17:24:18", "severity": "HIGH", "event": "INTERRUPT", "thread": "Cliente-VIP-2", "msg": "Desistiu da fila", "action": "ALLOW"}

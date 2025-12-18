@@ -71,3 +71,119 @@
 {"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 0", "msg": "Saldo atualizado para: 55", "action": "ALLOW"}
 {"timestamp": "2025-12-18 17:19:41", "severity": "INFO", "event": "WORK", "thread": "MB- 1", "msg": "Saldo atualizado para: 38", "action": "ALLOW"}
 {"timestamp": "2025-12-18 17:19:41", "severity": "HIGH", "event": "ERROR", "thread": "MAIN", "msg": "FALHA DE INTEGRIDADE: Perderam-se 230€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:42", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 1 [Seguro: true]", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "INIT", "thread": "MB- 0", "msg": "Transferência de: 91 €", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WAIT", "thread": "MB- 0", "msg": "a aguardar permissão...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "INIT", "thread": "MB- 2", "msg": "Transferência de: 94 €", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WAIT", "thread": "MB- 2", "msg": "a aguardar permissão...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "INIT", "thread": "MB- 3", "msg": "Transferência de: 86 €", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WAIT", "thread": "MB- 3", "msg": "a aguardar permissão...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "INIT", "thread": "MB- 1", "msg": "Transferência de: 69 €", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WAIT", "thread": "MB- 1", "msg": "a aguardar permissão...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "INIT", "thread": "MB- 4", "msg": "Transferência de: 10 €", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WAIT", "thread": "MB- 4", "msg": "a aguardar permissão...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 0", "msg": "permissão obtida", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WORK", "thread": "MB- 0", "msg": "Saldo atualizado91", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 0", "msg": "Saiu da conta", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 2", "msg": "permissão obtida", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WORK", "thread": "MB- 2", "msg": "Saldo atualizado185", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 2", "msg": "Saiu da conta", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 3", "msg": "permissão obtida", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WORK", "thread": "MB- 3", "msg": "Saldo atualizado271", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 3", "msg": "Saiu da conta", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 1", "msg": "permissão obtida", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WORK", "thread": "MB- 1", "msg": "Saldo atualizado340", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 4", "msg": "permissão obtida", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 1", "msg": "Saiu da conta", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "WORK", "thread": "MB- 4", "msg": "Saldo atualizado350", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 4", "msg": "Saiu da conta", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:45", "severity": "INFO", "event": "RESULT", "thread": "MAIN", "msg": "Sucesso. Saldo: 350", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:49", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 1 [Seguro: true]", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "INIT", "thread": "MB- 1", "msg": "Transação (Sync) de 44€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "INIT", "thread": "MB- 2", "msg": "Transação (Sync) de 68€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WAIT", "thread": "MB- 2", "msg": "A aguardar monitor...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WAIT", "thread": "MB- 1", "msg": "A aguardar monitor...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "INIT", "thread": "MB- 0", "msg": "Transação (Sync) de 12€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WAIT", "thread": "MB- 0", "msg": "A aguardar monitor...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "INIT", "thread": "MB- 4", "msg": "Transação (Sync) de 92€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WAIT", "thread": "MB- 4", "msg": "A aguardar monitor...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 2", "msg": "Monitor adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "INIT", "thread": "MB- 3", "msg": "Transação (Sync) de 36€", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WAIT", "thread": "MB- 3", "msg": "A aguardar monitor...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WORK", "thread": "MB- 2", "msg": "Saldo atualizado: 68", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 2", "msg": "Monitor libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 3", "msg": "Monitor adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WORK", "thread": "MB- 3", "msg": "Saldo atualizado: 104", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 3", "msg": "Monitor libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 4", "msg": "Monitor adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WORK", "thread": "MB- 4", "msg": "Saldo atualizado: 196", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 4", "msg": "Monitor libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 0", "msg": "Monitor adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WORK", "thread": "MB- 0", "msg": "Saldo atualizado: 208", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 0", "msg": "Monitor libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "MB- 1", "msg": "Monitor adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "WORK", "thread": "MB- 1", "msg": "Saldo atualizado: 252", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "MB- 1", "msg": "Monitor libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:50", "severity": "INFO", "event": "RESULT", "thread": "MAIN", "msg": "Sucesso. Saldo: 252", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:57", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 2 [Seguro: true]", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "WAIT", "thread": "Agente-1", "msg": "Aguardar origem (  Cliente A)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Agente-1", "msg": "Conta validada: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "WAIT", "thread": "Agente-2", "msg": "Aguardar origem (  Cliente A)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "WAIT", "thread": "Agente-1", "msg": "Aguardar destino ( Cliente B)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "SUCCESS", "thread": "Agente-1", "msg": "Transferência realizada com sucesso", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-1", "msg": "Libertou destino Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Agente-2", "msg": "Conta validada: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-1", "msg": "Libertou origemCliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "WAIT", "thread": "Agente-2", "msg": "Aguardar destino ( Cliente B)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "SUCCESS", "thread": "Agente-2", "msg": "Transferência realizada com sucesso", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-2", "msg": "Libertou destino Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-2", "msg": "Libertou origemCliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:23:59", "severity": "INFO", "event": "SUCCESS", "thread": "MAIN", "msg": "Execução terminada", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:03", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 2 [Seguro: true]", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "WAIT", "thread": "Agente-2", "msg": "A aguardar monitor 1 (Cliente A)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "WAIT", "thread": "Agente-1", "msg": "A aguardar monitor 1 (Cliente A)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Agente-2", "msg": "Monitor 1 adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "WAIT", "thread": "Agente-2", "msg": "A aguardar monitor 2 (Cliente B)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Agente-2", "msg": "Monitor 2 adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "SUCCESS", "thread": "Agente-2", "msg": "Transferência Sync realizada", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-2", "msg": "Monitor 2 libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-2", "msg": "Monitor 1 libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Agente-1", "msg": "Monitor 1 adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "WAIT", "thread": "Agente-1", "msg": "A aguardar monitor 2 (Cliente B)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Agente-1", "msg": "Monitor 2 adquirido", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "SUCCESS", "thread": "Agente-1", "msg": "Transferência Sync realizada", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-1", "msg": "Monitor 2 libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Agente-1", "msg": "Monitor 1 libertado", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:05", "severity": "INFO", "event": "SUCCESS", "thread": "MAIN", "msg": "Execução terminada", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:14", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 3 [Seguro: true]", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "WAIT", "thread": "Cliente-VIP-0", "msg": "Tirou senha e aguarda...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "WAIT", "thread": "Cliente-VIP-2", "msg": "Tirou senha e aguarda...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Cliente-VIP-0", "msg": "A ser atendido (Senha 0)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "WAIT", "thread": "Cliente-VIP-1", "msg": "Tirou senha e aguarda...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "WAIT", "thread": "Cliente-Normal", "msg": "Tirou senha e aguarda...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Cliente-VIP-0", "msg": "Atendimento concluído", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "WAIT", "thread": "Cliente-VIP-0", "msg": "Tirou senha e aguarda...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Cliente-VIP-2", "msg": "A ser atendido (Senha 1)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Cliente-VIP-2", "msg": "Atendimento concluído", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "WAIT", "thread": "Cliente-VIP-2", "msg": "Tirou senha e aguarda...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Cliente-VIP-1", "msg": "A ser atendido (Senha 2)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Cliente-VIP-1", "msg": "Atendimento concluído", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "WAIT", "thread": "Cliente-VIP-1", "msg": "Tirou senha e aguarda...", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:17", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Cliente-Normal", "msg": "A ser atendido (Senha 3)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Cliente-VIP-0", "msg": "A ser atendido (Senha 4)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Cliente-Normal", "msg": "Atendimento concluído", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "INFO", "event": "SUCCESS", "thread": "MAIN", "msg": "Cliente Normal executou com sucesso", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Cliente-VIP-0", "msg": "Atendimento concluído", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "HIGH", "event": "INTERRUPT", "thread": "Cliente-VIP-0", "msg": "Desistiu da fila", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "HIGH", "event": "INTERRUPT", "thread": "Cliente-VIP-1", "msg": "Desistiu da fila", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Cliente-VIP-2", "msg": "A ser atendido (Senha 5)", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "INFO", "event": "LOCK_RELEASE", "thread": "Cliente-VIP-2", "msg": "Atendimento concluído", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:18", "severity": "HIGH", "event": "INTERRUPT", "thread": "Cliente-VIP-2", "msg": "Desistiu da fila", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:27", "severity": "INFO", "event": "SYSTEM_START", "thread": "MAIN", "msg": "Cenário 2 [Seguro: false]", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:27", "severity": "INFO", "event": "WAIT", "thread": "Hacker", "msg": "Validando origem: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:27", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Hacker", "msg": "Origem bloqueada: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:27", "severity": "INFO", "event": "WAIT", "thread": "Vitima", "msg": "Validando origem: Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:27", "severity": "INFO", "event": "LOCK_ACQUIRED", "thread": "Vitima", "msg": "Origem bloqueada: Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:28", "severity": "INFO", "event": "WAIT", "thread": "Hacker", "msg": "A tentar validar destino: Cliente B", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:28", "severity": "INFO", "event": "WAIT", "thread": "Vitima", "msg": "A tentar validar destino: Cliente A", "action": "ALLOW"}
+{"timestamp": "2025-12-18 17:24:33", "severity": "CRITICAL", "event": "DEADLOCK_DETECTED", "thread": "MAIN", "msg": "TIMEOUT: Deadlock confirmado", "action": "BLOCK"}
